@@ -1,0 +1,19 @@
+{
+  "name": "xlmanagementsolutions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "svg-sprite": "^2.0.4"
+  },
+  "scripts": {
+    "build:sprite": "svg-sprite -s --symbol-dest assets/logos assets/logos/raw/*.svg"
+  }
+}
+

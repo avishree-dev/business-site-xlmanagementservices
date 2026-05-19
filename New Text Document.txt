@@ -1,0 +1,53 @@
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data = e.parameter;
+
+  const phone = String(data.phone).trim();
+  const role = data.role;
+
+  const lastRow = sheet.getLastRow();
+
+  let status = "New-Lead";
+
+  if (lastRow > 1) {
+    const values = sheet.getRange(2, 1, lastRow - 1, 9).getValues();
+
+    const PHONE_COL = 2; // Phone
+    const ROLE_COL = 4;  // Role
+
+    let samePhoneExists = false;
+    let sameRoleExists = false;
+
+    values.forEach(row => {
+      if (String(row[PHONE_COL]).trim() == phone) {
+        samePhoneExists = true;
+
+        if (row[ROLE_COL] == role) {
+          sameRoleExists = true;
+        }
+      }
+    });
+
+    if (sameRoleExists && samePhoneExists) {
+      status = "Repeat";        // same phone + same role
+    } else if (samePhoneExists) {
+      status = "Multi-role";    // same phone, different role
+    }
+  }
+
+  sheet.appendRow([
+    new Date(),
+    data.name,
+    data.phone,
+    data.location,
+    data.role,
+    data.bike,
+    data.experience,
+    "Website",
+    status
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: status }))
+    .setMimeType(ContentService.MimeType.JSON);
+}

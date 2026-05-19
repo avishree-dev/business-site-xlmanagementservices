@@ -1,0 +1,37 @@
+{
+  "field": {
+    "title": "Field Recovery Executive",
+    "description": "Handle on-ground recovery operations, borrower visits, and follow-ups.",
+    "responsibilities": [
+      "Visit borrowers for recovery follow-ups",
+      "Negotiate repayment plans",
+      "Maintain daily reporting",
+      "Coordinate with internal teams"
+    ],
+    "requirements": [
+      "Basic communication skills",
+      "Two-wheeler preferred",
+      "Willingness to travel locally",
+      "Experience in recovery is a plus"
+    ],
+    "applyRole": "Field Executive"
+  },
+
+  "telecaller": {
+    "title": "Telecalling Executive",
+    "description": "Manage customer interactions through calls and follow up on payments.",
+    "responsibilities": [
+      "Call customers for reminders",
+      "Maintain call records",
+      "Handle queries professionally",
+      "Follow structured scripts"
+    ],
+    "requirements": [
+      "Good communication skills",
+      "Basic computer knowledge",
+      "Ability to handle pressure",
+      "Experience preferred"
+    ],
+    "applyRole": "Telecaller"
+  }
+}
