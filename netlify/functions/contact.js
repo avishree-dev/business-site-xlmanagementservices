@@ -19,6 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const status = form.querySelector(".form-status");
   const button = form.querySelector("button");
+  const typeInput = document.querySelector('input[name="type"]');
+  const typeButtons = document.querySelectorAll('.enquiry-options button');
+
+  typeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      typeInput.value = button.dataset.value;
+
+      typeButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
