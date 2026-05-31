@@ -43,7 +43,7 @@
     width: 0%;
     height: 2px;
     background: var(--accent);
-    transition: width 0.25s ease;
+    transition: width var(--transition-fast);
 }
 
 .navbar-links a:hover::after {
@@ -65,12 +65,11 @@
     
     cursor: pointer;
 
-    transition: all 0.25s ease;
+    transition: all var(--transition-fast);
 }
 
 .hamburger:hover {
     background: rgba(255,255,255,0.15);
-    transform: scale(1.05);
 }
 
 .hamburger span {
@@ -80,12 +79,12 @@
 
     border-radius: 2px;
 
-    transition: all 0.35s cubic-bezier(.22,.61,.36,1);
+    transition: all var(--transition-base);
 }
 
 /* ===== Hamburger → X ===== */
 .hamburger.active span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -94,15 +93,15 @@
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .mobile-menu {
     position: absolute;
     top: 100%;
-    right: 0;
+    right: 12px;
 
-    width: 240px;
+    width: min(240px, calc(100vw - 24px));
 
     background: white;
     border-radius: 12px;
@@ -111,9 +110,9 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 
     opacity: 0;
-    transform: translateY(-10px) scale(0.98);
+    transform: var(--hover-lift-sm) scale(1.01);
 
-    transition: all 0.25s ease;
+    transition: all var(--transition-fast);
     pointer-events: none;
 }
 
@@ -134,7 +133,7 @@
 
 .mobile-menu.open {
     opacity: 1;
-    transform: translateY(10px) scale(1);
+    transform: var(--hover-lift-sm) scale(1.01);
     pointer-events: auto;
 }
 
@@ -147,7 +146,7 @@
 .mobile-menu li {
     opacity: 0;
     transform: translateX(10px);
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
 .mobile-menu.open li {
@@ -155,10 +154,10 @@
     transform: translateX(0);
 }
 
-.mobile-menu.open li:nth-child(1) { transition-delay: 0.05s; }
-.mobile-menu.open li:nth-child(2) { transition-delay: 0.1s; }
-.mobile-menu.open li:nth-child(3) { transition-delay: 0.15s; }
-.mobile-menu.open li:nth-child(4) { transition-delay: 0.2s; }
+.mobile-menu.open li:nth-child(1) { transition-delay: 0ms; }
+.mobile-menu.open li:nth-child(2) { transition-delay: 80ms; }
+.mobile-menu.open li:nth-child(3) { transition-delay: 160ms; }
+.mobile-menu.open li:nth-child(4) { transition-delay: 240ms; }
 
 .mobile-menu li:not(:last-child) {
     border-bottom: 1px solid rgba(0,0,0,0.09);

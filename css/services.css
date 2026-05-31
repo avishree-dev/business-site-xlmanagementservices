@@ -48,10 +48,9 @@
   align-items: center;
   text-align: center;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.4s ease;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              opacity var(--transition-slow);
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 
   opacity: 0;
@@ -72,7 +71,7 @@
   background: linear-gradient(120deg, transparent, rgba(77,163,255,0.4), transparent);
 
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-fast);
   will-change: opacity;
 }
 
@@ -119,6 +118,7 @@
   box-shadow: 
     0 10px 20px rgba(0,0,0,0.06),
     0 0 0 1px rgba(0,0,0,0.05);
+  transform: var(--hover-lift-md);
 }
 
 .service-card.featured {
@@ -210,7 +210,7 @@
   margin:auto;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.6s ease;
+  transition: all var(--transition-slow);
 
   display: flex;
   flex-direction: column;
@@ -280,14 +280,14 @@
 
 .process-step.active .step-bg{
   opacity:0.12;
-  transition:opacity .4s ease;
+  transition:opacity var(--transition-slow);
   transform:translateX(-50%) translateY(-12px);
 }
 
 .process-step.active .process-icon{
   background:#f4a261;
   transform:scale(1.1);
-  transition:all .3s ease;
+  transition:all var(--transition-base);
 }
 
 .process-step.active .step-number {
@@ -310,7 +310,7 @@
   height:2px;
   background:#163f6d;
   width:0;
-  transition:width 1s cubic-bezier(.22,.61,.36,1);
+  transition:width 1s var(--ease-standard);
   z-index: 1;
 }
 
@@ -322,7 +322,7 @@
   height:14px;
   background:#f1e75b;
   border-radius:50%;
-  transition: left 0.9s cubic-bezier(.22,.61,.36,1);
+  transition: left 0.9s var(--ease-standard);
   z-index:2;
 }
 
@@ -388,7 +388,7 @@
   padding: 0.8rem 1rem;
   border-radius: 10px;
 
-  transition: transform 0.25s ease;
+  transition: transform var(--transition-fast);
   color: #ffffff;
 }
 
@@ -400,7 +400,7 @@
 
 .portfolio-item:hover {
   background: rgba(252, 236, 236, 0.04);
-  transform: translateY(-3px);
+  transform: var(--hover-lift-sm);
 }
 
 .portfolio-icon {
@@ -496,7 +496,7 @@
 .stat-item{
   opacity:0;
   transform:translateY(30px);
-  transition:all 0.8s ease;
+  transition:all var(--transition-slow);
 }
 
 .stat-item.show{
@@ -504,10 +504,10 @@
   transform:translateY(0);
 }
 
-.stat-item:nth-child(1){transition-delay:0.1s;}
-.stat-item:nth-child(2){transition-delay:0.25s;}
-.stat-item:nth-child(3){transition-delay:0.4s;}
-.stat-item:nth-child(4){transition-delay:0.55s;}
+.stat-item:nth-child(1){transition-delay:80ms;}
+.stat-item:nth-child(2){transition-delay:240ms;}
+.stat-item:nth-child(3){transition-delay:320ms;}
+.stat-item:nth-child(4){transition-delay:400ms;}
 
 @media (max-width:768px){
 

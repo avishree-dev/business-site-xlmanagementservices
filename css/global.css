@@ -4,6 +4,7 @@ section {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .section-header,.why-section-header {
@@ -41,7 +42,7 @@ p {
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.7s cubic-bezier(.22,.61,.36,1);
+  transition: all var(--transition-slow);
   will-change: transform, opacity;
 }
 
@@ -50,15 +51,15 @@ p {
   transform: translateY(0);
 }
 
-.stats-grid .stat-card:nth-child(1) { transition-delay: 0.05s; }
-.stats-grid .stat-card:nth-child(2) { transition-delay: 0.15s; }
-.stats-grid .stat-card:nth-child(3) { transition-delay: 0.25s; }
+.stats-grid .stat-card:nth-child(1) { transition-delay: 0ms; }
+.stats-grid .stat-card:nth-child(2) { transition-delay: 160ms; }
+.stats-grid .stat-card:nth-child(3) { transition-delay: 240mss; }
 
-.infra-grid .infra-card:nth-child(1) { transition-delay: 0.05s; }
-.infra-grid .infra-card:nth-child(2) { transition-delay: 0.15s; }
+.infra-grid .infra-card:nth-child(1) { transition-delay: 0ms; }
+.infra-grid .infra-card:nth-child(2) { transition-delay: 160ms; }
 
-.why-grid .why-card:nth-child(1) { transition-delay: 0.05s; }
-.why-grid .why-card:nth-child(2) { transition-delay: 0.15s; }
+.why-grid .why-card:nth-child(1) { transition-delay: 0ms; }
+.why-grid .why-card:nth-child(2) { transition-delay: 160ms; }
 
 .scroll-progress {
   position: fixed;
@@ -67,18 +68,21 @@ p {
   height: 3px;
   width: 0%;
   background: var(--accent);
-  z-index: 9999;
+  z-index: 20000;
+  pointer-events: none;
 }
 
 img.lazy-fade {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-slow);
 }
 
 img.lazy-fade.loaded {
   opacity: 1;
 }
-::before,
+
+*,
+*::before,
 *::after {
   box-sizing: border-box;
 }
@@ -93,7 +97,7 @@ body.no-scroll {
 }
 
 button, a {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(77,163,255,0.2);
 }
 
 :root {
@@ -101,11 +105,22 @@ button, a {
   --accent: #4DA3FF;
 
   --text: #2B2B2B;
-  --muted: #545454;
+  --muted: #4b5563;
   --bg: #FFFFFF;
 
   --font-heading: Figtree;
   --font-body: Inter;
+
+
+  --ease-standard: cubic-bezier(.22,.61,.36,1);
+
+  --transition-fast: 0.2s var(--ease-standard);
+  --transition-base: 0.35s var(--ease-standard);
+  --transition-slow: 0.6s var(--ease-standard);
+
+  --hover-lift-sm: translateY(-4px);
+  --hover-lift-md: translateY(-6px);
+  --hover-lift-lg: translateY(-8px);
 }
 
 body {
@@ -156,7 +171,7 @@ body::after {
 .why-card,
 .testimonial {
   border-radius: 14px;
-  transition: all 0.35s ease;
+  transition: all var(--transition-base);
 }
 
 .stat-card,
@@ -168,13 +183,13 @@ body::after {
 /* Better hover */
 .infra-card:hover,
 .testimonial:hover {
-  transform: translateY(-8px);
+  transform: var(--hover-lift-md);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .stat-card:hover,
 .why-card:hover {
-  transform: translateY(-8px);
+  transform: var(--hover-lift-md);
   box-shadow: 
     0 20px 40px rgba(0,0,0,0.08),
     0 0 0 1px rgba(2,8,75,0.05);
@@ -191,9 +206,9 @@ body::after {
   font-size: 0.95rem;
   font-weight: 600;
 
-  transition: transform 0.25s ease,
-              box-shadow 0.25s ease,
-              background 0.3s ease;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              background var(--transition-base);
 
   text-align: center;
   cursor: pointer;
@@ -211,7 +226,7 @@ body::after {
     120deg,transparent 30%,
     rgba(255,255,255,0.25),transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
 }
 
 .btn:hover::after {
@@ -219,8 +234,8 @@ body::after {
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  transition:all 0.5s ease ;
+  transform: var(--hover-lift-sm);
+  transition:all var(--transition-slow) ;
   box-shadow: 
               0 12px 30px rgba(0,0,0,0.12),
               0 0 0 1px rgba(255,255,255,0.05) inset;
@@ -264,10 +279,14 @@ body::after {
 
 .floating-whatsapp {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 16px;
+  right: 16px;
   width: 55px;
   height: 55px;
+
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+
   background: #25d366;
   border-radius: 50%;
   display: flex;
@@ -295,7 +314,7 @@ body::after {
   text-align: center;
   color: white;
 
-  background: url("/assets/images/hero.jpg") center/cover no-repeat;
+  background: url("/assets/images/hero.webp") center/cover no-repeat;
 }
 
 .global-hero-overlay {
@@ -353,7 +372,7 @@ body::after {
   gap: 16px;
   justify-content: center;
   flex-direction: row;
-  gap: 12px;
+  gap: 6px;
   width: 100%;
 }
 
@@ -425,7 +444,7 @@ body::after {
   border-radius: 14px;
 
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  transition: 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .highlight-card i {
@@ -446,7 +465,7 @@ body::after {
 }
 
 .highlight-card:hover {
-  transform: translateY(-6px);
+  transform: var(--hover-lift-md);
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
 }
 
@@ -492,11 +511,11 @@ body::after {
   border-radius: 14px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
 }
 
 .stat-card:hover {
-  transform: translateY(-6px);
+  transform: var(--hover-lift-md);
 }
 
 .stat-card h3 {
@@ -536,7 +555,7 @@ body::after {
   border-radius: 12px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
 }
 
 .infra-card::before {
@@ -561,7 +580,7 @@ body::after {
 }
 
 .infra-card:hover {
-  transform: translateY(-5px);
+  transform: var(--hover-lift-md);
 }
 
 .infra-card h3 {
@@ -593,11 +612,11 @@ body::after {
   border-radius: 12px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: 0.3s;
+  transition: var(--transition-base);
 }
 
 .why-card:hover {
-  transform: translateY(-5px);
+  transform: var(--hover-lift-md);
 }
 
 .why-card h3 {
@@ -675,12 +694,11 @@ body::after {
   height: 50px;
   width: auto;
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
 }
 
 .logo-track img:hover {
 opacity: 1;
-transform: scale(1.05);
 }
 
 
@@ -705,7 +723,15 @@ transform: scale(1.05);
   border-radius: 12px;
   padding: 25px;
 
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
+
+  transition:
+    opacity var(--transition-slow),
+    visibility var(--transition-slow);
+
   font-size: 16px;
   line-height: 1.6;
   padding: 20px;
@@ -715,7 +741,9 @@ transform: scale(1.05);
 }
 
 .testimonial.active {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
 }
 
 .testimonial-slider {
@@ -796,6 +824,8 @@ transform: scale(1.05);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-cta-secondary {
@@ -834,7 +864,7 @@ transform: scale(1.05);
   border: 1px solid #ddd;
   background: white;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all var(--transition-fast);
 }
 
 .enquiry-options button:hover {
@@ -853,8 +883,12 @@ transform: scale(1.05);
     padding: 4rem 1.2rem;
   }
 
+  body::after {
+    display: none;
+  }
+
   .animate-on-scroll {
-    transition:  all 0.5s ease;
+    transition:  all var(--transition-slow);
   }
 
   .container {
@@ -919,6 +953,41 @@ transform: scale(1.05);
     font-size: 0.95rem;
   }
 
+  .service-card:hover,
+  .job-card:hover,
+  .team-card:hover,
+  .why-card:hover,
+  .highlight-card:hover {
+    transform: none;
+  }
+
+  .global-hero {
+    background-image: url("/assets/images/hero-mobile.webp");
+  }
+
+  .global-hero-btn-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .global-hero-btn-container .divider {
+    display: none;
+  }
+
+  /* top row buttons */
+  .global-hero-btn-container a:not(:last-child) {
+    flex: 1;
+    min-width: 140px;
+    max-width: 180px;
+  }
+
+  /* WhatsApp button */
+  .global-hero-btn-container a:last-child {
+    width: 100%;
+    max-width: 320px;
+  }
+
   .contact-cta-secondary {
     text-align: center;
     padding: 2.5rem 1.2rem;
@@ -926,9 +995,15 @@ transform: scale(1.05);
 
   .cta-button-container {
     flex-direction: column;
-    width: 65%;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
     gap: 12px;
-    padding-right: 2.9rem;
+  }
+
+  .cta-button-container .btn {
+    width: 100%;
+    max-width: 320px;
   }
 
   .cta-button-container a {
@@ -957,7 +1032,13 @@ transform: scale(1.05);
   }
   .contact-cta-primary {
   overflow: hidden;
-}
+  }
+  .floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    right: 12px;
+    bottom: 12px;
+  }
 }
 
 /* =========================
@@ -988,4 +1069,76 @@ a i[data-lucide],
 h3 i[data-lucide],
 p i[data-lucide] {
   margin-right: 6px;
+}
+
+/* =========================
+   ACCESSIBILITY: FOCUS STATES
+========================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Better keyboard visibility */
+.navbar-links a:focus-visible,
+.mobile-menu a:focus-visible {
+  background: rgba(77,163,255,0.12);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* Buttons */
+.btn:focus-visible {
+  box-shadow:
+    0 0 0 4px rgba(77,163,255,0.25),
+    0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Cards that are clickable */
+.job-card:focus-visible,
+.location-card:focus-visible,
+.team-card:focus-visible,
+.service-card:focus-visible {
+  outline: 3px solid rgba(77,163,255,0.4);
+  outline-offset: 4px;
+}
+
+/* =========================
+   ACCESSIBILITY: REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll,
+  .process-step,
+  .service-card,
+  .job-card,
+  .testimonial,
+  .team-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .logo-track {
+    animation: none !important;
+  }
 }

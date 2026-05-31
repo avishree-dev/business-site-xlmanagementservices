@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ===== IMAGE FADE =====
-  document.querySelectorAll("img").forEach(img => {
+  document.querySelectorAll("img.lazy-fade").forEach(img => {
     if (img.complete) {
       img.classList.add("loaded");
     } else {

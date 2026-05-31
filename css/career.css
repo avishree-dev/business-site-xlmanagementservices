@@ -80,7 +80,7 @@
 
   cursor: pointer;
 
-  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
+  transition: all var(--transition-base);
 
   position: relative;
   overflow: hidden;
@@ -100,12 +100,12 @@
   );
 
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity var(--transition-base);
 }
 
 /* hover state */
 .job-card:hover {
-  transform: translateY(-8px) scale(1.01);
+  transform: var(--hover-lift-lg);
 
   box-shadow:
     0 20px 50px rgba(0,0,0,0.08),
@@ -157,11 +157,11 @@
 }
 
 .job-footer .arrow {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .job-card:hover .arrow {
-  transform: translateX(4px);
+  transform: var(--hover-lift-lg);
 }
 
 .job-badge {
@@ -198,11 +198,11 @@
 .job-panel {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all var(--transition-slow);
 }
 
 .job-panel:active {
-  transform: scale(0.98);
+  transform: scale(1.01);
 }
 
 .job-panel.active {
@@ -245,11 +245,11 @@
 /* JOB CARD HOVER */
 .job-card {
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition-base);
 }
 
 .job-card:hover {
-  transform: translateY(-6px);
+  transform: var(--hover-lift-lg);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
@@ -304,7 +304,7 @@
 
   padding: 8px 0;
   border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: all 0.25s ease;
+  transition: all var(--transition-fast);
 }
 
 .modal-header h2 {
@@ -371,7 +371,7 @@
   backdrop-filter: none; 
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
   z-index: 9998;
 }
 
@@ -394,7 +394,7 @@
   border-radius: 18px 18px 0 0;
 
   transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(.22,.61,.36,1);
+  transition: transform var(--transition-base);
 
   z-index: 9999;
   max-height: 85vh;
@@ -488,7 +488,7 @@
   border: 1px solid #ddd;
   background: white;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all var(--transition-fast);
 }
 
 .career-options button:hover {
@@ -506,11 +506,11 @@
 @keyframes modalEnter {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.96);
+    transform: translateY(20px) scale(1.01);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1.01);
   }
 }
 
@@ -542,8 +542,20 @@
 
 
 @media (max-width: 768px) {
-  .job-grid {
+  .job-grid,
+  .panel-grid,
+  .career-grid {
     grid-template-columns: 1fr;
+  }
+  .job-card,
+  .panel-content,
+  .bottom-sheet,
+  .modal-box {
+    width: 100%;
+    max-width: 100%;
+  }
+  .job-card {
+    overflow: hidden;
   }
     .career-intro-grid {
     grid-template-columns: 1fr; /* 🔥 stack */
