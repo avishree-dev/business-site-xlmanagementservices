@@ -3,18 +3,43 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.8rem 1.5rem;
-    background: var(--primary);
+
+    padding: 0.5rem 3rem;
+    min-height: 110px;
+
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    background: linear-gradient(
+                    90deg,
+                    #FFFFFF 0%,
+                    #DCEAF7 35%,
+                    #4E8FE6 50%,
+                    #071D3D 100%
+                );
+
+    box-shadow: 0 8px 30px rgba(2, 8, 75, 0.12);
+
+    overflow: hidden;
 }
 
-/* ====== Logo ====== */
+.navbar-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
-    height: 80px;
+    height: 130px;
+    width: auto;
     display: block;
+}
+
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* ====== Desktop Menu ====== */
