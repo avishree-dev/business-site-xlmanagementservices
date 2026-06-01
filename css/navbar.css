@@ -14,12 +14,14 @@
     background: linear-gradient(
                     90deg,
                     #FFFFFF 0%,
-                    #DCEAF7 35%,
-                    #4E8FE6 50%,
+                    #DCEAF7 20%,
+                    #8BC5F8 40%,
+                    #4E8FE6 60%,
+                    #12376A 80%,
                     #071D3D 100%
                 );
 
-    box-shadow: 0 8px 30px rgba(2, 8, 75, 0.12);
+    box-shadow: none;
 
     overflow: hidden;
 }
@@ -31,7 +33,7 @@
 }
 
 .logo img {
-    height: 130px;
+    height: 110px;
     width: auto;
     display: block;
 }
@@ -46,28 +48,36 @@
 .navbar-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 40px;
     margin: 0;
     padding: 10px;
 }
 
 .navbar-links a {
     text-decoration: none;
-    color: var(--bg);
-    font-weight: 500;
     position: relative;
     display: inline-block;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.navbar-links a:hover {
+    background: rgba(255,255,255,0.12);
 }
 
 /* Hover underline animation */
 .navbar-links a::after {
+    display: none;
     content: "";
     position: absolute;
     left: 0;
     bottom: -6px;
     width: 0%;
     height: 2px;
-    background: var(--accent);
+    background: var(--primary);
     transition: width var(--transition-fast);
 }
 
