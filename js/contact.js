@@ -37,20 +37,31 @@ document.addEventListener("DOMContentLoaded", () => {
     status.textContent = "Sending...";
     button.disabled = true;
 
-    const data = Object.fromEntries(new FormData(form).entries());
-    console.log(data);
+    const data = Object.fromEntries(
+      new FormData(form).entries()
+    );
 
     try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-      });
+      const response = await fetch(
+          "/.netlify/functions/contact", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
 
       if (response.ok) {
         status.textContent = "✅ Message sent successfully!";
         form.reset();
       } else {
-        throw new Error("Failed");
+        if (!response.ok) {
+          console.error(result);
+          throw new Error(result.error);
+        }
       }
     } catch (err) {
       status.textContent = "❌ Something went wrong. Try again.";
