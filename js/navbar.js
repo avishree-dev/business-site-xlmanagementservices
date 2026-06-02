@@ -1,6 +1,7 @@
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobile-menu");
 const backdrop = document.getElementById("menu-backdrop");
+const navbar = document.querySelector(".navbar");
 
 
 function openMenu() {
@@ -59,3 +60,7 @@ document.addEventListener("click", (e) => {
 });
 
 backdrop.addEventListener("click", closeMenu);
+
+window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 80);
+});

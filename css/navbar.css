@@ -7,8 +7,11 @@
     padding: 0.5rem 3rem;
     min-height: 110px;
 
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 3000;
 
     background: linear-gradient(
@@ -22,8 +25,25 @@
                 );
 
     box-shadow: none;
+    transition: all var(--transition-base)
+}
 
+.navbar.scrolled {
+    background: rgba(220, 234, 247, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.08);
+    min-height: 80px;
+}
+
+.navbar.scrolled .navbar-links a {
+    color: var(--primary);
+}
+
+.navbar.scrolled .logo img {
+    height: 80px;
 }
 
 .navbar-left {

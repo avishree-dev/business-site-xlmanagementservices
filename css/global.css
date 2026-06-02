@@ -126,6 +126,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  padding-top: 110px;
 }
 
 body::after {
@@ -951,6 +952,10 @@ opacity: 1;
     padding: 4rem 1.2rem;
   }
 
+  body {
+    padding-top: 80px;
+  }
+
   body::after {
     display: none;
   }
@@ -1042,7 +1047,6 @@ opacity: 1;
                     #12376A 75%,
                     #071D3D 100%
     );
-    padding-top: 7rem;
   }
 
   .global-hero-left {
