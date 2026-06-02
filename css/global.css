@@ -96,10 +96,6 @@ body.no-scroll {
   overflow: hidden;
 }
 
-button, a {
-  -webkit-tap-highlight-color: rgba(77,163,255,0.2);
-}
-
 :root {
   --primary:#02084b;
   --accent: #4DA3FF;
@@ -1033,8 +1029,24 @@ opacity: 1;
     transform: none;
   }
 
+  .global-hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .global-hero-right {
+    display: none;
+  }
+
   .global-hero {
-    background-image: url("/assets/images/hero-mobile.webp");
+    background: linear-gradient(
+                    180deg,
+                    #FFFFFF 0%,
+                    #DCEAF7 20%,
+                    #8BC5F8 40%,
+                    #4E8FE6 60%,
+                    #12376A 80%,
+                    #071D3D 100%
+    )
   }
 
   .global-hero-btn-container {
