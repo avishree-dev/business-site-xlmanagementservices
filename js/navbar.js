@@ -10,6 +10,9 @@ function openMenu() {
     mobileMenu.hidden = false;
     mobileMenu.classList.add("open");
 
+    backdrop.hidden = false;
+    backdrop.classList.add("show");
+
     document.body.classList.add("no-scroll");
 }
 
@@ -18,10 +21,14 @@ function closeMenu() {
     hamburger.setAttribute("aria-expanded", "false");
 
     mobileMenu.classList.remove("open");
+
+    backdrop.classList.remove("show");
+
     document.body.classList.remove("no-scroll");
 
     setTimeout(() => {
         mobileMenu.hidden = true;
+        backdrop.hidden = true;
     }, 200); // small delay for optional animation
 }
 
@@ -50,3 +57,5 @@ document.addEventListener("click", (e) => {
         closeMenu();
     }
 });
+
+backdrop.addEventListener("click", closeMenu);
