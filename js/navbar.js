@@ -29,7 +29,7 @@ function closeMenu() {
     setTimeout(() => {
         mobileMenu.hidden = true;
         backdrop.hidden = true;
-    }, 200); // small delay for optional animation
+    }, 300); // small delay for optional animation
 }
 
 hamburger.addEventListener("click", () => {
