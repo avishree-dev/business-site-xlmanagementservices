@@ -97,12 +97,20 @@ body.no-scroll {
 }
 
 :root {
-  --primary:#02084b;
-  --accent: #4DA3FF;
+  --navy-900: #071D3D;
+  --navy-700: #12376A;
 
-  --text: #2B2B2B;
-  --muted: #4b5563;
+  --blue-500: #4E8FE6;
+  --blue-400: #4DA3FF;
+
+  --blue-200: #A8D5F2;
+  --blue-100: #DCEAF7;
+
   --bg: #FFFFFF;
+  --bg-alt: #F7FAFD;
+
+  --primary: var(--navy-900);
+  --accent: var(--blue-400);
 
   --font-heading: Figtree;
   --font-body: Inter;
@@ -852,6 +860,72 @@ opacity: 1;
   color: var(--accent);
 }
 
+.cta-dual {
+  padding: 6rem 0;
+}
+
+.cta-content-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 380px));
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+.cta-card {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+              135deg,
+              #4DA3FF,
+              #DCEAF7
+  ) ;
+  min-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.4);
+
+  transition: all var(--transition-base);
+}
+
+.cta-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.cta-card h3 {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.cta-card .btn {
+  width: fit-content;
+  align-self: flex-start;
+}
+
+.cta-card::before {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -90px;
+  right: -90px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.15);
+}
+
 .contact-cta-primary {
   background: var(--primary);
   padding: 4rem 2rem;
@@ -1082,6 +1156,10 @@ opacity: 1;
   .global-hero-btn-container a:last-child {
     width: 100%;
     max-width: 320px;
+  }
+
+  .cta-content-container {
+    grid-template-columns: 1fr;
   }
 
   .contact-cta-secondary {
