@@ -80,22 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== TESTIMONIAL SLIDER =====
-  let index = 0;
-  const testimonials = document.querySelectorAll(".testimonial");
-
-  function showTestimonial() {
-    if (testimonials.length === 0) return;
-
-    testimonials.forEach(t => t.classList.remove("active"));
-    testimonials[index].classList.add("active");
-    index = (index + 1) % testimonials.length;
-  }
-
-  if (testimonials.length > 0) {
-    showTestimonial(); // show first immediately
-    setInterval(showTestimonial, 4000);
-  }
 
   //Lucide Icons
   if (window.lucide) {

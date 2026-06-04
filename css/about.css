@@ -3,6 +3,14 @@
   padding: 5rem 0;
 }
 
+  .section-header.founder {
+    text-align: left;
+  }
+
+  .section-header.founder h2::after {
+    margin: 12px 12px 0;
+  }
+
 .team-section {
   background-color: var(--bg-light);
   text-align: center;
@@ -11,17 +19,9 @@
 
 .team-section h2 {
   margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
   color: var(--primary);
   position: relative;
   display: inline-block;
-}
-.team-section p{
-  font-size: 1.1rem;
-  color: #555;
-  max-width: 600px;
-  margin: 0 auto 40px auto;
-  line-height: 1.6;
 }
 
 .team-section h2::after {
