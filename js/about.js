@@ -1,10 +1,44 @@
 const modal = document.getElementById("infraModal");
 const modalImg = document.getElementById("infraModalImg");
 const counter = document.getElementById("infraCounter");
-const images = document.querySelectorAll(".infra-card-img img");
+const images = document.querySelectorAll(".infra-slide img");
+const slides = document.querySelectorAll(".infra-slide");
+const dotsContainer = document.querySelector(".infra-dots");
+
+let current = 0;
+let dots
 
 let currentIndex = 0;
 let isZoomed = false;
+
+function showSlide(index) {
+
+  slides[current].classList.remove("active");
+  dots[current].classList.remove("active");
+
+  current = index;
+
+  slides[current].classList.add("active");
+  dots[current].classList.add("active");
+}
+
+slides.forEach((_, index) => {
+  const dot = document.createElement("button");
+
+  dot.classList.add("infra-dot");
+
+  if (index === 0) {
+      dot.classList.add("active");
+  }
+
+  dot.addEventListener("click", () => {
+      showSlide(index);
+  });
+
+  dotsContainer.appendChild(dot);
+});
+
+dots = document.querySelectorAll(".infra-dot");
 
 /* Open modal */
 images.forEach((img, index) => {
@@ -83,3 +117,15 @@ modalImg.addEventListener("click", (e) => {
   isZoomed = !isZoomed;
   modalImg.classList.toggle("zoomed");
 });
+
+document.querySelector(".next").addEventListener("click", () => {
+    showSlide((current + 1) % slides.length);
+});
+
+document.querySelector(".prev").addEventListener("click", () => {
+    showSlide((current - 1 + slides.length) % slides.length);
+});
+
+setInterval(() => {
+    showSlide((current + 1) % slides.length);
+}, 5000);
