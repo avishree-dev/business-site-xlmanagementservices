@@ -8,7 +8,7 @@
 }
 
 .contact-locations {
-  background: linear-gradient(to bottom, #ffffff, #f6f8fc);
+  background: var(--bg-alt);
 }
 .contact-grid {
   display: grid;
@@ -29,6 +29,12 @@
 
   transition: all var(--transition-base);
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
 
   position: relative;
   overflow: hidden;
@@ -57,8 +63,12 @@
 
 
 .contact-icon {
-  font-size: 24px;
-  background: rgba(77,163,255,0.1);
+  font-size: 28px;
+  background: linear-gradient(
+              135deg,
+              #4DA3FF,
+              #DCEAF7
+  ) ;
   width: 50px;
   height: 50px;
   display: flex;
@@ -83,9 +93,12 @@
   color: var(--accent);
 }
 
-.contact-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
+.contact-icon.highlight{
+  background: linear-gradient(
+              135deg,
+              #4DA3FF,
+              var(--primary)
+  ) ;
 }
 
 .contact-card a {
@@ -95,6 +108,7 @@
   margin-top: 24px;
   position: relative;
   font-size: small;
+  margin-top: auto;
 }
 
 .contact-card a::after {
@@ -122,6 +136,11 @@
   width: 100%;
   margin-top: 10px;
 }
+
+.enquiry-options button {
+  color: #777;
+}
+
 
 .contact-bottom {
   background: linear-gradient(to bottom, #ffffff, #f6f8fc);
@@ -177,7 +196,7 @@
 }
 
 .form-group input:focus + label,
-.form-group input:valid + label,
+.form-group input:not(:placeholder-shown) + label,
 .form-group textarea:focus + label {
   top: -8px;
   font-size: 11px;
@@ -217,6 +236,7 @@
   background: white;
   padding: 25px;
   border-radius: 12px;
+  min-height: 200px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border-left: 4px solid var(--primary);
@@ -228,15 +248,14 @@
   cursor: pointer;
 }
 
+.location-card p {
+  margin-top: 22px;
+}
+
 .location-card:hover {
   transform: var(--hover-lift-sm);
 }
 
-.location-tag {
-  font-size: 12px;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
 
 .map-container {
   border-radius: 16px;

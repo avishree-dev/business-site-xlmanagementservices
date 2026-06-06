@@ -64,7 +64,7 @@
 
   background: radial-gradient(
     circle,
-    rgba(77,163,255,0.25),
+    rgba(77,163,255,0.15),
     transparent 70%
   );
 
@@ -74,28 +74,64 @@
 /* Each card snaps */
 .team-card {
   flex: 0 0 auto;
-  width: 300px; /* fixed width */
-  background: linear-gradient(to right, var(--blue-200), var(--bg));
-  border-radius: 0 14px 14px 0;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  padding: 24px;
-  text-align: center;
-  transition: all var(--transition-base);
+  width: 300px;
+  min-height: 320px;
   margin: 0 auto;
+  padding: 24px;
+
+  background: linear-gradient(
+                              180deg,
+                              #ffffff,
+                              #f8fbff);
+  border: 1px solid rgba(77,163,255,0.08);
+  border-radius: 14px 0 14px 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
   backdrop-filter: blur(6px);
   color: var(--text);
+
+  text-align: center;
+
+  transition: all var(--transition-base);
+
+
   position: relative;
+  overflow: hidden;
+}
+
+.team-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  top: -40px;
+  right: -40px;
+
+  border: 2px solid rgba(77,163,255,0.2);
+
+  transform: rotate(45deg);
+
+  pointer-events: none;
 }
 
 .team-card::before {
   content: "";
+
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(90deg, var(--blue-500), var(--navy-900));
-  border-radius: 14px 14px 0 0;
+
+  width: 80px;
+  height: 80px;
+
+  bottom: -40px;
+  left: -40px;
+
+  border: 2px solid rgba(77,163,255,0.2);
+
+  transform: rotate(45deg);
+
+  pointer-events: none;
 }
 
 .team-card:hover {
@@ -104,14 +140,16 @@
 }
 
 .team-card img {
-  width: 110px;
-  height: 110px;
+  width: 140px;
+  height: 140px;
   border-radius: 14px;
   margin: 0 auto 15px;
-  border: 3px solid rgba(77,55,255,0.12);
+  border: 3px solid rgba(77,163,255,0.15);
   object-fit: cover;
   transition: transform var(--transition-base);
 }
+
+
 
 .team-card h3 {
   font-weight: 600;
@@ -121,7 +159,7 @@
 }
 
 .team-role {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--muted);
   margin: 6px 0 10px 0; /* top + bottom spacing */

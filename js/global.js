@@ -99,4 +99,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  //Global-image Slide
+    const images = document.querySelectorAll(".global-slide img");
+    const slides = document.querySelectorAll(".global-slide");
+
+    let current = 0;
+
+    function showSlide(index) {
+
+    slides[current].classList.remove("active");
+
+    current = index;
+
+    slides[current].classList.add("active");
+  }
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      showSlide((current + 1) % slides.length);
+    }, 5000);
+  }
+
 });

@@ -170,16 +170,25 @@
 
                 <div class="global-hero-btn-container">
                     <a href="tel:+917003098956" class="btn btn-secondary">Call Now</a>
-                    <span class="divider"></span>
+                      
                     <a href="/Career.html" class="btn btn-secondary">Apply for Job</a>
-                    <span class="divider"></span>
+                      
                     <a href="https://wa.me/917003098956" class="btn btn-primary" target="_blank">WhatsApp Now</a>
                 </div>
                 </div>
                 <div class="global-hero-right">
-                    <img
-                        src="/assets/images/recovery-team.webp"
-                        alt="XL Management Services Team">
+                    <div class="global-carousel">
+                        <div class="global-slide active">
+                            <img
+                            src="/assets/images/recovery-team.webp"
+                            alt="XL Management Services Team">
+                        </div>
+                    <div class="global-slide">
+                            <img
+                            src="/assets/images/office4.webp"
+                            alt="XL Management Services Team">
+                        </div>
+                    </div>
                 </div>
             </div>    
         </div>
@@ -191,7 +200,7 @@
                     <div class="contact-icon">
                         <i data-lucide="phone" class="icon-lg icon-primary"></i>
                     </div>
-                        <h3>Call Us</h3>
+                        <h3 class="gradient-text-dark">Call Us</h3>
                         <p>Talk directly to our operations team</p>
                         <a href="tel:+917003098956">+91 7003098956</a>
                     </div>
@@ -200,7 +209,7 @@
                     <div class="contact-icon">
                         <i data-lucide="mail" class="icon-lg icon-primary"></i>
                     </div>
-                    <h3>Business Enquiries</h3>
+                    <h3 class="gradient-text-dark">Business Enquiries</h3>
                     <p>Send your enquiry anytime</p>
                     <a href="mailto:corporate@xlms.in">
                         corporate@xlms.in
@@ -211,7 +220,7 @@
                     <div class="contact-icon">
                         <i data-lucide="briefcase" class="icon-lg icon-primary"></i>
                     </div>
-                    <h3>Careers / Jobs</h3>
+                    <h3 class="gradient-text-dark">Careers / Jobs</h3>
                     <p>For job applications & HR queries</p>
                     <a href="mailto:careers@xlms.in">
                         careers@xlms.in
@@ -219,10 +228,10 @@
                 </div>
 
                 <div class="contact-card animate-on-scroll highlight">
-                    <div class="contact-icon">
+                    <div class="contact-icon highlight">
                         <i data-lucide="message-circle" class="icon-lg icon-white"></i>
                     </div>
-                    <h3>WhatsApp</h3>
+                    <h3 class="gradient-text">WhatsApp</h3>
                     <p>Fastest way to reach us</p>
                     <a href="https://wa.me/917003098956?text=Hello,%20XL%20Management%20Services,%0A%0AI%20would%20like%20to%20enquire%20about%20your%20debt%20recovery%20services.%0A%0ACompany:%20%0ARequirement:%20%0A%0APlease%20get%20in%20touch."
                         target="_blank">
@@ -241,7 +250,7 @@
         <div class="container">
 
             <div class="section-header">
-                <h2>Our Offices</h2>
+                <h2 class="gradient-text-dark">Our Offices</h2>
                 <p>Visit or connect with our branches</p>
             </div>
 
@@ -254,7 +263,7 @@
                             <i data-lucide="map-pin" class="icon-sm icon-accent"></i>
                             Kolkata (Head Office)
                         </h3>
-                        <p class="location-tag">Registered Office</p>
+                        <div class="global-badge">Registered Office</div>
                         <p>
                             537 Raja Basanta Roy Road,<br>
                             Hemanta Mukherjee Sarani,<br>
@@ -268,7 +277,7 @@
                         <i data-lucide="map-pin" class="icon-sm icon-accent"></i>
                         Kolkata (Branch)
                     </h3>
-                    <p class="location-tag">City Branch Office</p>
+                    <div class="global-badge">City Branch Office</div>
                     <p>
                     17A Lake View Road,<br>
                     Hemanta Mukherjee Sarani,<br>
@@ -282,7 +291,7 @@
                         <i data-lucide="map-pin" class="icon-sm icon-accent"></i>
                         Asansol
                     </h3>
-                    <p class="location-tag">Regional Office</p>
+                    <div class="global-badge">Regional Office</div>
                     <p>
                     Hill View Park North,<br>
                     Opp Khudiram Bose Park,<br>
@@ -300,7 +309,7 @@
             <div class="contact-bottom-grid">
                 <div class="contact-form-wrapper">
                     <div class="section-header">
-                        <h2>Prefer Email? Send Us a Message</h2>
+                        <h2 class="gradient-text-dark">Prefer Email? Send Us a Message</h2>
                         <p>Our team will get back to you shortly</p>
                     </div>
 
@@ -321,35 +330,37 @@
 
                         <div class="form-grid">
                             <div class="form-group">
-                                <input type="text" name="name" required>
+                                <input type="text" name="name" placeholder=" " required>
                                 <label>Full Name</label>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" required>
+                                <input type="email" name="email" placeholder=" " required>
                                 <label>Email Address</label>
                             </div>
                         </div>
 
                         <div class="form-grid">
                             <div class="form-group">
-                                <input type="tel" name="phone" required>
+                                <input type="tel" name="phone" placeholder=" " required>
                                 <label>Phone Number</label>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="company">
+                                <input type="text" name="company" placeholder=" ">
                                 <label>Company</label>
                             </div>
-                            <div class="enquiry-type">
-                                    <p>Select Enquiry Type</p>
+                            <div class="form-group">
+                                <div class="enquiry-type">
+                                        <p>Select Enquiry Type</p>
 
-                                    <div class="enquiry-options">
-                                        <button type="button" data-value="business">Business</button>
-                                        <button type="button" data-value="job">Jobs</button>
-                                    </div>
+                                        <div class="enquiry-options">
+                                            <button type="button" data-value="business">Business</button>
+                                            <button type="button" data-value="job">Jobs</button>
+                                        </div>
 
-                                    <input type="hidden" name="type" required>
+                                        <input type="hidden" name="type" required>
+                                </div>
                             </div>
                         </div>
 
@@ -364,7 +375,7 @@
                 <div class="map-wrapper">
 
                     <div class="section-header">
-                    <h2>Find Us</h2>
+                    <h2 class="gradient-text-dark">Find Us</h2>
                     <p>Visit our head office</p>
                     </div>
 
@@ -379,71 +390,82 @@
             </div>
         </div>
     </section>
-    <section class="contact-cta-primary">
-        <div class="cta-content">
-            <h2>Looking for a Reliable Recovery Partner?</h2>
-            <p>Connect with XL Management Services to discuss recovery outsourcing, delinquency management, and portfolio resolution.</p>
+    <section class="cta-dual">
+        <div class="section-header">
+            <h2 class="gradient-text-dark">Let's Get Started</h2>
         </div>
-        <div class="cta-info">
-            <p><strong>Email:</strong>corporate@xlms.in</p>
-            <p><strong>Phone:</strong> +91 7003098956</p>
-        </div>
-        <div class="cta-button-container">
-            <a href="tel:+917003098956" class="btn btn-accent">Call Us</a>
-            <a href="/Career.html" class="btn btn-secondary">Apply for a Job</a>
-            <a href="/Services.html" class="btn btn-secondary">Know More</a>
+        <div class="cta-content-container">
+            <div class="cta-card">
+                <h3>Speak With Our Team</h3>
+                <a href="tel:+917003098956" class="btn btn-primary">Call Us</a>
+            </div>
+            <div class="cta-card">
+                <h3>Explore Open Positions</h3>
+                <a href="/Career.html" class="btn btn-primary">View Jobs</a>
+            </div>
         </div>
     </section>
 <footer class="site-footer">
   <div class="footer-container">
 
-    <div class="footer-col">
-      <img src="/assets/logos/logo-with-bg.svg" alt="XL Management Services" class="footer-logo">
+        <div class="footer-col">
+        <img src="/assets/logos/logo-with-bg.svg" alt="XL Management Services" class="footer-logo">
 
-      <p>
-        XL Management Services is a professional debt recovery and portfolio
-        management firm with over two decades of experience. Trusted by banks,
-        NBFCs, and financial institutions, we deliver ethical, compliant, and
-        performance-driven recovery solutions across Eastern India.
-      </p>
-    </div>
+        <p>
+            XL Management Services is a professional debt recovery and portfolio
+            management firm with over two decades of experience. Trusted by banks,
+            NBFCs, and financial institutions, we deliver ethical, compliant, and
+            performance-driven recovery solutions across Eastern India.
+        </p>
+        </div>
 
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="/About.html">About</a></li>
-        <li><a href="/Services.html">Services</a></li>
-        <li><a href="/Career.html">Careers</a></li>
-        <li><a href="/Contact.html">Contact</a></li>
-      </ul>
-    </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="/About.html">About</a></li>
+                <li><a href="/Services.html">Services</a></li>
+                <li><a href="/Career.html">Careers</a></li>
+                <li><a href="/Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact-item">
+            <i data-lucide="map-pinned" class="icon-sm icon-muted"></i>
 
-    <div class="footer-col">
-      <h3>Contact</h3>
+            <div>
+                <div class="footer-label">Registered Office</div>
 
-      <p>
-        <i data-lucide="map-pinned" class="icon-sm icon-muted"></i>
-        <strong>Registered Office</strong><br>
-        537 Raja Basanta Roy Road,<br>
-        Hemanta Mukherjee Sarani,<br>
-        Kolkata – 700029
-      </p>
+                <p>
+                    537 Raja Basanta Roy Road<br>
+                    Hemanta Mukherjee Sarani<br>
+                    Kolkata – 700029
+                </p>
+            </div>
+        </div>
 
-      <p>
-        <i data-lucide="phone" class="icon-sm icon-muted"></i>
-        <strong>Phone:</strong><br>
-        <a href="tel:+913340640118">033-40640118</a><br>
-        <a href="tel:+917003098956">+91 7003098956</a>
-      </p>
+        <div class="footer-contact-item">
+            <i data-lucide="phone" class="icon-sm icon-muted"></i>
 
-      <p>
+            <div>
+                <div class="footer-label">Phone</div>
+
+                <p>
+                    <a href="tel:+913340640118">033-40640118</a><br>
+                    <a href="tel:+917003098956">+91 7003098956</a>
+                </p>
+            </div>
+        </div>
+    <div class="footer-contact-item">
         <i data-lucide="mail" class="icon-sm icon-muted"></i>
-        <strong>Email:</strong><br>
-        <a href="mailto:corporate@xlms.in">corporate@xlms.in</a>
-      </p>
-    </div>
 
-  </div>
+        <div>
+            <div class="footer-label">Email</div>
+
+            <p>
+                <a href="mailto:corporate@xlms.in">corporate@xlms.in</a>
+            </p>
+        </div>
+    </div>
+    </div>
   <div class="footer-bottom">
     <p>© 2026 XL Management Services. All rights reserved.</p>
   </div>
