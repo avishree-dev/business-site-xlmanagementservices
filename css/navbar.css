@@ -88,20 +88,21 @@
     background: rgba(255,255,255,0.12);
 }
 
-/* Hover underline animation */
-.navbar-links a::after {
-    display: none;
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: var(--primary);
-    transition: width var(--transition-fast);
+.navbar-links a.active {
+    background: rgba(255,255,255,0.18);
 }
 
-.navbar-links a:hover::after {
+.navbar-links a.active::after {
+    display: block;
+    width: 100%;
+}
+
+.navbar.scrolled .navbar-links a.active {
+    background: rgba(78, 143, 230, 0.18);
+}
+
+.navbar.scrolled .navbar-links a.active::after {
+    display: block;
     width: 100%;
 }
 
