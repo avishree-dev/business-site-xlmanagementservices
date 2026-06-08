@@ -20,9 +20,9 @@ html {
 .section-header p,.why-section-header p {
   font-size: 1.1rem;
   color: #555;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 40px auto;
-  line-height: 1.6;
+  line-height: 1.4;
   margin-top: 2.5rem;
 }
 
@@ -1685,8 +1685,8 @@ opacity: 1;
   .about::after,
   .cta-dual::before,
   .cta-dual::after,
-  .contact-cta-primary::before,
-  .contact-cta-primary::after,
+  .contact-cta::before,
+  .contact-cta::after,
   .global-hero-right::before {
     display: none;
   }

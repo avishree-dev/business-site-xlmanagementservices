@@ -105,8 +105,9 @@
     text-align: center;
   }
 
-  .footer-col {
+  .footer-col, .footer-contact-item {
     align-items: center;
+    justify-content: center;
   }
 
   .footer-logo {

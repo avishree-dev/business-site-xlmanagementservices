@@ -8,7 +8,7 @@
   }
 
   .section-header.founder h2::after {
-    margin: 12px 12px 0;
+    margin: 16px 16px 0;
   }
 
 .team-section {
@@ -23,16 +23,6 @@
   color: var(--primary);
   position: relative;
   display: inline-block;
-}
-
-.team-section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--primary);
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
 }
 
 .team-section h3 {
@@ -492,6 +482,14 @@
 
   .founder-content h2 {
     font-size: 1.6rem;
+  }
+
+  .section-header.founder {
+    text-align: center;
+  }
+
+  .section-header.founder h2::after {
+    margin: 16px auto 0;
   }
 
   .founder-content {

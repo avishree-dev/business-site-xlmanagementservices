@@ -642,12 +642,6 @@
   .portfolio {
     padding: 3rem 1.2rem;
   }
-   .cta-button-container {
-    flex-direction: column;
-    width: 65%;
-    gap: 12px;
-    padding-right: 2.9rem;
-  }
 }
 
 @media (max-width: 900px) {
@@ -656,6 +650,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+  
+  .service-card.featured::after {
+    display: none;
+  }
+
   .performance-highlights {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
