@@ -1,0 +1,51 @@
+try {
+      result = await res.json();
+    } catch (err) {
+      messageBox.textContent = "Server error. Try again.";
+      messageBox.className = "form-message error";
+
+      submitBtn.textContent = "Apply Now";
+      submitBtn.disabled = false;
+      return;
+    }
+
+    if (result.status === "Repeat") {
+      messageBox.textContent = "You’ve already applied for this role. We’ll contact you soon.";
+      messageBox.className = "form-message error";
+
+      submitBtn.textContent = "Apply Now";
+      submitBtn.disabled = false;
+      return;
+    }
+    else if (result.status === "Multi-role") {
+      messageBox.textContent = "Applying for another role. Please send on WhatsApp.";
+      messageBox.className = "form-message success";
+
+      const message = `Dear Debasish Roy%0AHi, I want to apply for *${data.role}*%0AName: ${data.name}%0AQualification: ${data.qualification}%0ALocation: ${data.location}%0APhone: ${data.phone}%0ABike: ${data.bike}%0AExperience: ${data.experience}%0AThanks`;
+
+      window.open(`https://wa.me/919874555666?text=${message}`, '_blank');
+
+      submitBtn.textContent = "Apply Now";
+      submitBtn.disabled = false;
+      return;
+    }
+    else if (result.status === "New-Lead") {
+      messageBox.textContent = "Please send on WhatsApp.";
+      messageBox.className = "form-message success";
+
+      const message = `Dear Debasish Roy%0AHi, I want to apply for *${data.role}*%0AName: ${data.name}%0AQualification: ${data.qualification}%0ALocation: ${data.location}%0APhone: ${data.phone}%0ABike: ${data.bike}%0AExperience: ${data.experience}%0AThanks`;
+
+      window.open(`https://wa.me/919874555666?text=${message}`, '_blank');
+
+      setTimeout(() => {
+        closeModal();
+      }, 1200);
+
+        else {
+      messageBox.textContent = "Something went wrong. Try again.";
+      messageBox.className = "form-message error";
+    }
+
+    submitBtn.textContent = "Apply Now";
+    submitBtn.disabled = false;
+  });

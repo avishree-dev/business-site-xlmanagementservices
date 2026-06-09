@@ -1,4 +1,15 @@
 // =========================
+// SUPABASE AUTH
+// =========================
+const SUPABASE_URL = "https://ovuozlzhmypacnoqlanz.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_HU6vhmr0DJ5SDqOatj9Mvw_XmDIsRip";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+// =========================
 // STATE
 // =========================
 let jobs = {};
@@ -208,91 +219,124 @@ function initForm() {
     submitBtn.disabled = true;
 
     const form = new FormData(this);
+    const resumeFile = form.get('resume');
+
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+    if (resumeFile && resumeFile.size > 0) {
+
+      if (resumeFile.type !== "application/pdf") {
+        messageBox.textContent =
+          "Please upload a PDF file.";
+        messageBox.className =
+          "form-message error";
+
+        submitBtn.textContent = "Apply Now";
+        submitBtn.disabled = false;
+        return;
+      }
+
+      if (resumeFile.size > MAX_FILE_SIZE) {
+        messageBox.textContent =
+          "Resume must be smaller than 5 MB.";
+        messageBox.className =
+          "form-message error";
+
+        submitBtn.textContent = "Apply Now";
+        submitBtn.disabled = false;
+        return;
+      }
+    }
+
+    let resumePath = null;
+
+    if (resumeFile && resumeFile.size > 0) {
+      const phone = form.get('phone');
+      const name = form.get('name');
+      const role = form.get('role');
+
+      const fileName =
+      `${name}_${phone}_${role}-${Date.now()}.pdf`;
+
+      const { error: uploadError } =
+      await db.storage
+        .from('resumes')
+        .upload(fileName, resumeFile);
+
+      if (uploadError) {
+      throw uploadError;
+      }
+
+      resumePath = fileName;
+    }
 
     const data = {
-      name: form.get('name'),
-      phone: form.get('phone'),
-      qualification: form.get('qualification'),
-      location: form.get('location'),
-      role: form.get('role'),
-      bike: form.get('bike'),
-      experience: form.get('experience')
+    name: form.get('name'),
+    phone: form.get('phone'),
+    qualification: form.get('qualification'),
+    location: form.get('location'),
+    role: form.get('role'),
+    bike: form.get('bike'),
+    experience: form.get('experience'),
+    resume_path: resumePath
     };
 
-    let res;
-
-    console.log(data);
-
+    console.log(resumeFile);
+  
     try {
-      res = await fetch("https://script.google.com/macros/s/AKfycbxSTT0nK1c3QdgAw8oqSxE9K8S7n6C_R4N9eChArvmsAakhbSGEJHtQ3zpZ7Yv93dvy7A/exec", {
-        method: "POST",
-        body: new URLSearchParams(data)
-      });
-    } catch (err) {
-      console.error(err);
+      const { error } = await db
+      .from('job-applications')
+      .insert([data]);
 
-      messageBox.textContent = "Something went wrong. Try again.";
-      messageBox.className = "form-message error";
+      if (error) {
 
-      submitBtn.textContent = "Apply Now";
-      submitBtn.disabled = false;
-      return;
-    }
+      if (error.code === "23505") {
+        messageBox.textContent =
+          "You have already applied for this role.";
+        messageBox.className =
+          "form-message error";
+      }
+      else {
+        throw error;
+      }
 
-    let result;
+      } else {
 
-    try {
-      result = await res.json();
-    } catch (err) {
-      messageBox.textContent = "Server error. Try again.";
-      messageBox.className = "form-message error";
+      messageBox.textContent =
+        "Application submitted successfully. We'll contact you soon.";
 
-      submitBtn.textContent = "Apply Now";
-      submitBtn.disabled = false;
-      return;
-    }
+      messageBox.className =
+        "form-message success";
 
-    if (result.status === "Repeat") {
-      messageBox.textContent = "You’ve already applied for this role. We’ll contact you soon.";
-      messageBox.className = "form-message error";
+      this.reset();
 
-      submitBtn.textContent = "Apply Now";
-      submitBtn.disabled = false;
-      return;
-    }
-    else if (result.status === "Multi-role") {
-      messageBox.textContent = "Applying for another role. Please send on WhatsApp.";
-      messageBox.className = "form-message success";
-
-      const message = `Dear Debasish Roy%0AHi, I want to apply for *${data.role}*%0AName: ${data.name}%0AQualification: ${data.qualification}%0ALocation: ${data.location}%0APhone: ${data.phone}%0ABike: ${data.bike}%0AExperience: ${data.experience}%0AThanks`;
-
-      window.open(`https://wa.me/919874555666?text=${message}`, '_blank');
-
-      submitBtn.textContent = "Apply Now";
-      submitBtn.disabled = false;
-      return;
-    }
-    else if (result.status === "New-Lead") {
-      messageBox.textContent = "Please send on WhatsApp.";
-      messageBox.className = "form-message success";
-
-      const message = `Dear Debasish Roy%0AHi, I want to apply for *${data.role}*%0AName: ${data.name}%0AQualification: ${data.qualification}%0ALocation: ${data.location}%0APhone: ${data.phone}%0ABike: ${data.bike}%0AExperience: ${data.experience}%0AThanks`;
-
-      window.open(`https://wa.me/919874555666?text=${message}`, '_blank');
+      document
+        .querySelectorAll('.career-options button')
+        .forEach(btn => btn.classList.remove('active'));
 
       setTimeout(() => {
         closeModal();
       }, 1200);
-    }
-    else {
-      messageBox.textContent = "Something went wrong. Try again.";
-      messageBox.className = "form-message error";
-    }
+      }
 
-    submitBtn.textContent = "Apply Now";
-    submitBtn.disabled = false;
-  });
-}
+      } catch (err) {
+
+      console.error("Supabase exception:", err);
+
+      messageBox.textContent =
+      "Something went wrong. Please try again.";
+
+      messageBox.className =
+      "form-message error";
+
+      } finally {
+
+      submitBtn.textContent = "Apply Now";
+      submitBtn.disabled = false;
+      }
+
+    }
+    )};
 
   // ========================
   // Hero Buttons
