@@ -291,8 +291,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 100%;
-  max-width: 420px;
+  width: min(90vw, 700px);
+  max-width: 700px;
   max-height: 90vh;
 
   display: flex;
@@ -535,6 +535,14 @@
   border-radius: 8px;
   display: none;
   text-align: center;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+input[type="file"] {
+  width: 100%;
 }
 
 .form-message.success {

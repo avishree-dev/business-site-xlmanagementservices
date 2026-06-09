@@ -271,9 +271,6 @@ function initForm() {
         .querySelectorAll('.career-options button')
         .forEach(btn => btn.classList.remove('active'));
 
-      setTimeout(() => {
-        closeModal();
-      }, 1200);
     }
 
     messageBox.className =
