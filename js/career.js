@@ -1,15 +1,4 @@
 // =========================
-// SUPABASE AUTH
-// =========================
-const SUPABASE_URL = "https://ovuozlzhmypacnoqlanz.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_HU6vhmr0DJ5SDqOatj9Mvw_XmDIsRip";
-
-const db = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
-
-// =========================
 // STATE
 // =========================
 let jobs = {};
@@ -212,11 +201,14 @@ function initForm() {
   formEl.addEventListener('submit', async function (e) {
     e.preventDefault();
 
+
     const submitBtn = this.querySelector("button[type='submit']");
     const messageBox = document.getElementById('formMessage');
 
     submitBtn.textContent = "Submitting...";
     submitBtn.disabled = true;
+
+
 
     const form = new FormData(this);
     const resumeFile = form.get('resume');
@@ -248,65 +240,30 @@ function initForm() {
       }
     }
 
-    let resumePath = null;
-
-    if (resumeFile && resumeFile.size > 0) {
-      const phone = form.get('phone');
-      const name = form.get('name');
-      const role = form.get('role');
-
-      const fileName =
-      `${name}_${phone}_${role}-${Date.now()}.pdf`;
-
-      const { error: uploadError } =
-      await db.storage
-        .from('resumes')
-        .upload(fileName, resumeFile);
-
-      if (uploadError) {
-      throw uploadError;
+  try {
+    const response = await fetch(
+      "https://ovuozlzhmypacnoqlanz.supabase.co/functions/v1/submit_function",
+      {
+        method: "POST",
+        body: form
       }
+    );
 
-      resumePath = fileName;
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || "Unknown error");
     }
 
-    const data = {
-    name: form.get('name'),
-    phone: form.get('phone'),
-    qualification: form.get('qualification'),
-    location: form.get('location'),
-    role: form.get('role'),
-    bike: form.get('bike'),
-    experience: form.get('experience'),
-    resume_path: resumePath
-    };
+    if (result.action === "updated") {
 
-    console.log(resumeFile);
-  
-    try {
-      const { error } = await db
-      .from('job-applications')
-      .insert([data]);
+      messageBox.textContent =
+        "Your application already existed. Your details and resume were updated.";
 
-      if (error) {
-
-      if (error.code === "23505") {
-        messageBox.textContent =
-          "You have already applied for this role.";
-        messageBox.className =
-          "form-message error";
-      }
-      else {
-        throw error;
-      }
-
-      } else {
+    } else {
 
       messageBox.textContent =
         "Application submitted successfully. We'll contact you soon.";
-
-      messageBox.className =
-        "form-message success";
 
       this.reset();
 
@@ -317,27 +274,27 @@ function initForm() {
       setTimeout(() => {
         closeModal();
       }, 1200);
-      }
-
-      } catch (err) {
-
-      console.error("Supabase exception:", err);
-
-      messageBox.textContent =
-      "Something went wrong. Please try again.";
-
-      messageBox.className =
-      "form-message error";
-
-      } finally {
-
-      submitBtn.textContent = "Apply Now";
-      submitBtn.disabled = false;
-      }
-
     }
-    )};
 
+    messageBox.className =
+      "form-message success";
+
+  } catch (err) {
+
+    console.error(err);
+
+    messageBox.textContent =
+      err.message || "Something went wrong.";
+
+    messageBox.className =
+      "form-message error";
+  }
+    finally {
+    submitBtn.textContent = "Apply Now";
+    submitBtn.disabled = false;
+  }
+    })
+  };
   // ========================
   // Hero Buttons
   //=========================
