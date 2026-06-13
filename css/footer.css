@@ -52,6 +52,7 @@
   height: 85px;
   margin-bottom: 12px;
   border-radius: 8px;
+  filter: invert(100%) hue-rotate(180deg);
 }
 
 .footer-links {
