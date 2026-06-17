@@ -83,7 +83,7 @@ The project was built to provide a professional online presence while streamlini
 ## Project Structure
 
 ```text
-business-site-xlmanagementsolutions/
+business-site-xlmanagementservices/
 
 ├── index.html
 ├── About.html
