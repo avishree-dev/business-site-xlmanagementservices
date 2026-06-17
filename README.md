@@ -1,4 +1,4 @@
-# XL Management Solutions Website
+# XL Management Services Website
 
 A responsive corporate website developed for XL Management Solutions, featuring recruitment workflows, secure contact handling, dynamic job listings, and automated email communication.
 
@@ -6,18 +6,23 @@ The project was built to provide a professional online presence while streamlini
 
 ## Live Demo
 
-🔗 Live Website: YOUR_LIVE_URL
+🔗 Live Website: www.xlms.in
 
 ## Screenshots
 
-<p align="center">
-  <img src="screenshots/homepage.png" width="45%">
-  <img src="screenshots/careers.png" width="45%">
-</p>
+<details>
+<summary>Screenshots</summary>
 
-<p align="center">
-  <img src="screenshots/contact.png" width="45%">
-</p>
+### Homepage
+<img src="screenshots/homepage.png">
+
+### Careers
+<img src="screenshots/careers.png">
+
+### Contact
+<img src="screenshots/contact.png">
+
+</details>
 
 ## Features
 
@@ -124,13 +129,13 @@ The website is designed to provide a consistent experience across desktop, table
 Clone the repository:
 
 ```bash
-git clone https://github.com/avishree-dev/business-site-xlmanagementsolutions.git
+git clone https://github.com/avishree-dev/business-site-xlmanagementservices.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd business-site-xlmanagementsolutions
+cd business-site-xlmanagementservices
 ```
 
 Run using a local development server such as:
